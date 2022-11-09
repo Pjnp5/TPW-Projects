@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
 
-
-# Create your views here.
+# GET
 
 def home(request):
     tparams = {
@@ -29,3 +28,19 @@ def about(request):
         'year': datetime.now().year,
     }
     return render(request, 'about.html', tparams)
+
+def appointment(request):
+    tparams = {
+        'title': 'Appointment',
+        'message': 'Your application description page.',
+        'year': datetime.now().year,
+    }
+    return render(request, 'appointment.html', tparams)
+
+def login(request):
+    tparams = {
+        'title': 'Login',
+        'message': 'Your application description page.',
+        'year': datetime.now().year,
+    }
+    return render(request, 'login.html', tparams)
