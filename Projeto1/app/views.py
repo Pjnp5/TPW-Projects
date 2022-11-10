@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
 
-# GET
+from app.forms import *
 
 def home(request):
     tparams = {
@@ -30,12 +30,16 @@ def about(request):
     return render(request, 'about.html', tparams)
 
 def appointment(request):
-    tparams = {
-        'title': 'Appointment',
-        'message': 'Your application description page.',
-        'year': datetime.now().year,
-    }
-    return render(request, 'appointment.html', tparams)
+    data = {}
+    if request.method == 'POST':
+        print(request.POST)
+        form = NewAppointmentForm(request.POST)
+        for i in form:
+            print(i)
+        # print(form.cleaned_data['name'])
+        data["form"] = form
+        print(data)
+    return render(request, 'appointment.html', data)
 
 def login(request):
     tparams = {

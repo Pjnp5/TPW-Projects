@@ -32,18 +32,21 @@
             <h3>Request <span>Appointment</span></h3>
           </div>
           <form name="contact_form" class="default-form contact-form" action="/appointment/" method="post">
+            {% csrf_token %}
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                     <label>
-                        <input class="form-control" type="text" name="Name" placeholder="Name" required="">
+                        <input class="form-control" type="text" name="name" placeholder="Name" required="">
                     </label>
                 </div>
+                
                 <div class="form-group">
                     <label>
-                        <input class="form-control" type="email" name="Email" placeholder="Email" required="">
+                        <input class="form-control" type="email" name="email" placeholder="Email" required="">
                     </label>
                 </div>
+                <!--
                 <div class="form-group">
                     <label>
                         <select class="form-control" name="subject">
@@ -52,8 +55,8 @@
                           <option>Psychological</option>
                         </select>
                     </label>
-                </div>
-              </div>
+                </div> -->
+              </div> <!--
               <div class="col-md-6">
                 <div class="form-group">
                     <label>
@@ -73,13 +76,13 @@
                         </select>
                     </label>
                 </div>
-              </div>
-              <div class="col-md-12">
+              </div> -->
+              <div class="col-md-12"> <!--
                 <div class="form-group">
                     <label>
                         <textarea class="form-control" name="form_message" placeholder="Your Message" required=""></textarea>
                     </label>
-                </div>
+                </div> -->
                 <div class="form-group text-center">
                   <button type="submit" class="btn-style-one">submit now</button>
                 </div>
