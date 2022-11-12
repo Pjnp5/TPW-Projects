@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 # SignUp
 class CreateAccountForm(UserCreationForm):
-    first_name = forms.CharField(max_length=50, required=True)
-    last_name = forms.CharField(max_length=50, required=False, help_text='Optional')
+    first_name = forms.CharField(max_length=200, required=True)
+    last_name = forms.CharField(max_length=200, required=False, help_text='Optional')
     email = forms.EmailField(max_length=200, help_text='Please inform a valid email address')
     address = forms.CharField(max_length=200, required=True, help_text='Please inform a email address')
     

@@ -42,15 +42,6 @@ def appointment(request):
         print(data)
     return render(request, 'appointment.html', data)
 
-def login(request):
-    tparams = {
-        'title': 'Login',
-        'message': 'Your application description page.',
-        'year': datetime.now().year,
-    }
-    return render(request, 'login.html', tparams)
-
-
 
 # SignUp
 def signup(request):
@@ -70,9 +61,3 @@ def signup(request):
         form = CreateAccountForm()
     return render(request, 'signup.html', {'form': form})
 
-
-# Logout user
-# def account_logout(request):
-#     Order.objects.filter(id=request.session['session']).delete()
-#     logout(request)
-#     return redirect('login')

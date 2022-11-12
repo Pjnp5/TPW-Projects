@@ -16,20 +16,20 @@
                     {% for field in form %}
                         <div class="row checkout__input">
                             <div class="col-md-4" >
-                                <p>{{ field.label_tag }}</p>
+                                <p class="txt2" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
                             </div>
-                            <div class="col">
-                                <p> {{ field }}</p>
+                            <div class="col-md-8" style="margin-bottom:16px;">
+                                <p style="margin-bottom:0px;"> {{ field }}</p>
                                 {% if field.help_text %}
-                                    <small style="color: grey">{{ field.help_text }}</small>
+                                    <small class="smallUl">{{ field.help_text }}</small>
                                 {% endif %}
                             </div>
                         </div>
                     {% endfor %}
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-8 col-md-6">
-                        <button type="submit" class="site-btn">CRIAR CONTA</button>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">CRIAR CONTA</button>
                     </div>
                 </div>
             </form>

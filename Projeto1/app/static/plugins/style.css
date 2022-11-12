@@ -3226,6 +3226,21 @@ button:focus {
 }
 /*# sourceMappingURL=style.css.map */
 
+.smallUl{
+  color: grey;
+  padding-left: 0px;
+}
+
+.smallUl ul{
+  color: grey;
+  padding-left: 0px;
+}
+
+.smallUl ul li{
+  color: grey;
+  padding-left: 0px;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {

@@ -97,11 +97,10 @@
         <li class="nav-item @@contact">
           <a class="nav-link" href="{% url "contact" %}">Contact</a>
         </li>
-        <li class="nav-item @@login">
-          <a class="nav-link" href="{% url "login" %}">Login</a>
-        </li>
       </ul>
+      
     </div>
+    {% include 'loginpartial.html' %}
   </div>
 </nav>
 <!--End Main Header -->
