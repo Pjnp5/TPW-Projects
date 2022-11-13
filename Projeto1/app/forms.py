@@ -51,7 +51,13 @@ class NewAppointmentForm(forms.ModelForm):
             'date': DateInput()
         }
 
-# Check scheduled appointments
-class CheckAppointmentsForm(forms.Form):
-    
-    pass
+class UpdateAppointmentForm(forms.ModelForm):
+    class Meta:
+        model = Appointment
+        fields = ('department', 'date', 'message')    
+        widgets = {
+            'date': DateInput()
+        }
+
+class searchForm(forms.Form):
+    query = forms.CharField(label='', max_length=100, widget=forms.TextInput())

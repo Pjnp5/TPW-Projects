@@ -24,12 +24,18 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('appointment/', views.appointment, name='appointment'),
-    path('appointments/', views.AppointmentsView, name='appointments'),
+    path('appointments/', views.appointmentsView, name='appointments'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html', next_page='/'), name='login'),
     path('logout', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('updateAppointments/', views.updateAppointments, name='updateAppointment'),
+    path('removeAppointments/', views.removeAppointments, name='removeAppointments'),
     path('signup/', views.signup, name='signup'),
+     path('pagenotfound/', views.pageNotFoundView, name='page not found'),
+
 
     # ADMIN
-    path('appointments/', views.AppointmentsView, name='admin/appointments'), # LISTA
+    path('appointments/search/', views.appointmentsSearchView, name='appointments'),
+    path('appointments/', views.appointmentsView, name='admin/appointments'),
+    path('departments/', views.departmentsView, name='admin/departments'),
     path('contacts/', views.home, name='admin/contacts')
 ]

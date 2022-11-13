@@ -10,17 +10,18 @@
                 
 
                 {% if user.is_superuser %}
-                    <li class="nav-item @@index">
+                    {% comment %} <li class="nav-item @@index">
                         <a class="nav-link" href="{% url "index" %}">Home</a>
-                    </li>
+                    </li> {% endcomment %}
                     <li class="nav-item @@admincontact">
-                        <a class="nav-link" href="{% url "admin/contacts" %}">Contact</a>
+                        <a class="nav-link" href="{% url "admin/contacts" %}">Contacts</a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item @@adminappointments">
                         <a class="nav-link" href="{% url "admin/appointments" %}">Appointments</a>
                     </li>
-                    {% endif %}
+                    <li class="nav-item @@admindepartments">
+                        <a class="nav-link" href="{% url "admin/departments" %}">Departments</a>
+                    </li>
                 {% else %}
                     <li class="nav-item @@index">
                         <a class="nav-link" href="{% url "index" %}">Home</a>

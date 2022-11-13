@@ -6,15 +6,6 @@
 
 {% block content %}
 <div style="height: calc(100vh - 169px);">
-
-    <div style="text-align: center; margin-top:25px">
-        <form style="display: inline-block;" action="search/" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <input style="background: #48bdc5; color: white; border-color: #48bdc5;" type="submit" value="Search">
-        </form>
-    </div>
-    
     <table class="styled-table">
         <thead>
             <tr>
@@ -33,14 +24,14 @@
                 <td>{{ appointment.department }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.message }}</td>
-                <td style="padding-left:auto;padding-right:auto;">
-                    <form id="UpdateForm" action="/update" method="POST">
-                        {% csrf_token %}
-                    </form>                    
-                    <a class="nav-link" href="javascript:document.getElementById('updateForm').submit()update"><i class="fa fa-retweet" aria-hidden="true"></form></i></a>
+                <td style="padding-left:auto;padding-right:auto;">                    
+                    <form id="UpdateForm" action="/update" method="GET">
+                    {% csrf_token %}
+                    </form>
+                    <a class="nav-link" href="javascript:document.getElementById('UpdateForm').submit()"><i class="fa fa-retweet" aria-hidden="true"></form></i></a>
                 </td>
                 <td>
-                    <form id="RemoveForm" action="/removeAppointments" method="POST">
+                    <form id="RemoveForm" action="/remove" method="GET">
                         {% csrf_token %}
                     </form>
                     <a class="nav-link" href="javascript:document.getElementById('RemoveForm').submit()"><i class="fa fa-trash" aria-hidden="true"></i></form></i></a>
