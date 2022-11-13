@@ -7,20 +7,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarLinks">
             <ul class="navbar-nav">
-                
-
                 {% if user.is_superuser %}
-                    {% comment %} <li class="nav-item @@index">
-                        <a class="nav-link" href="{% url "index" %}">Home</a>
-                    </li> {% endcomment %}
                     <li class="nav-item @@admincontact">
-                        <a class="nav-link" href="{% url "admin/contacts" %}">Contacts</a>
+                        <a class="nav-link" href="{% url "contacts" %}">Contacts</a>
                     </li>
                     <li class="nav-item @@adminappointments">
-                        <a class="nav-link" href="{% url "admin/appointments" %}">Appointments</a>
+                        <a class="nav-link" href="{% url "appointments" %}">Appointments</a>
                     </li>
                     <li class="nav-item @@admindepartments">
-                        <a class="nav-link" href="{% url "admin/departments" %}">Departments</a>
+                        <a class="nav-link" href="{% url "departments" %}">Departments</a>
                     </li>
                 {% else %}
                     <li class="nav-item @@index">
@@ -44,13 +39,16 @@
             </ul>
         </div>
         {% if user.is_authenticated %}
-        <div class="collapse navbar-collapse text-lg-right" id="navbarLinks" style="text-align: right!important;">
+        <div class="collapse navbar-collapse" id="navbarLinks">
             <ul class="navbar-nav">
                 <li class="nav-item @@logout">
                     <form id="logoutForm" action="/logout" method="GET">
                         {% csrf_token %}
                     </form>
                     <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-user"></i> Logout</a>
+                </li>
+                <li class="nav-item @@logout">
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
                 </li>
             </ul>
         </div>

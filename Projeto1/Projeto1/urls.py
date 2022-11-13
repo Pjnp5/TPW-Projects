@@ -20,22 +20,28 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pagenotfound/', views.pageNotFoundView, name='page not found'),
+
     path('', views.home, name='index'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('appointment/', views.appointment, name='appointment'),
-    path('appointments/', views.appointmentsView, name='appointments'),
+
     path('login/', auth_views.LoginView.as_view(template_name='login.html', next_page='/'), name='login'),
     path('logout', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('updateAppointments/', views.updateAppointments, name='updateAppointment'),
-    path('removeAppointments/', views.removeAppointments, name='removeAppointments'),
     path('signup/', views.signup, name='signup'),
-     path('pagenotfound/', views.pageNotFoundView, name='page not found'),
+    path('profile/', views.profileView, name='profile'),
 
+    path('appointments/', views.appointmentsView, name='appointments'),
+    path('appointments/search', views.appointmentsSearchView, name='appointments/search'),
+    path('appointments/update', views.updateAppointments, name='appointments/update'),
+    path('appointments/delete', views.removeAppointments, name='appointments/delete'),
 
     # ADMIN
-    path('appointments/search/', views.appointmentsSearchView, name='appointments'),
-    path('appointments/', views.appointmentsView, name='admin/appointments'),
-    path('departments/', views.departmentsView, name='admin/departments'),
-    path('contacts/', views.home, name='admin/contacts')
+    path('departments/', views.departmentsView, name='departments'),
+    path('departments/search', views.departmentsSearchView, name='departments/search'),
+    path('departments/add', views.addNewDepartment, name='departments/add'),
+    path('departments/update', views.updateDepartments, name='departments/update'),
+    path('departments/delete', views.removeDepartments, name='departments/delete'),
+    path('contacts/', views.home, name='contacts')
 ]

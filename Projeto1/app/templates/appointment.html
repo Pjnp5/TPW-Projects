@@ -39,21 +39,12 @@
                         <div class="col-md-2" >
                             <p class="form-group" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
                         </div>
-                        {% comment %} {% if field != 'date' %} {% endcomment %}
                           <div class="col-md-10" style="margin-bottom:16px;">
                               <p style="margin-bottom:0px;"> {{ field }}</p>
                               {% if field.help_text %}
                                   <small class="smallUl">{{ field.help_text }}</small>
                               {% endif %}
                           </div>
-                        {% comment %} {% else %}
-                          <div class="col-md-10" style="margin-bottom:16px;">
-                            <datepicker style="margin-bottom:0px;" placeholder="{{ field }}">
-                            {% if field.help_text %}
-                                <small class="smallUl">{{ field.help_text }}</small>
-                            {% endif %}
-                          </div>
-                        {% endif %} {% endcomment %}
                     </div>
                 {% endfor %}
 
