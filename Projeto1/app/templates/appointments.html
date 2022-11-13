@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}Sign Up | Medical HTML Template{% endblock %}
+
+{% block content %}
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Mensage</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.patient }}</td>
+            <td>{{ appointment.department }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.message }}</td>
+        </tr>
+        <!-- and so on... -->
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

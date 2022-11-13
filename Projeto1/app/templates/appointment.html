@@ -31,7 +31,40 @@
           <div class="section-title">
             <h3>Request <span>Appointment</span></h3>
           </div>
-          <form name="contact_form" class="default-form contact-form" action="/appointment/" method="post">
+          <form class="default-form contact-form" action="." method="post">
+            <div>
+                {% for field in form %}
+                {% csrf_token %}
+                    <div class="row checkout__input">
+                        <div class="col-md-2" >
+                            <p class="form-group" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
+                        </div>
+                        {% comment %} {% if field != 'date' %} {% endcomment %}
+                          <div class="col-md-10" style="margin-bottom:16px;">
+                              <p style="margin-bottom:0px;"> {{ field }}</p>
+                              {% if field.help_text %}
+                                  <small class="smallUl">{{ field.help_text }}</small>
+                              {% endif %}
+                          </div>
+                        {% comment %} {% else %}
+                          <div class="col-md-10" style="margin-bottom:16px;">
+                            <datepicker style="margin-bottom:0px;" placeholder="{{ field }}">
+                            {% if field.help_text %}
+                                <small class="smallUl">{{ field.help_text }}</small>
+                            {% endif %}
+                          </div>
+                        {% endif %} {% endcomment %}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="row form-group">
+                <div class="container-login100-form-btn" style="height: 100px">
+                    <button type="submit" class="btn-style-one">Add Appointment</button>
+                </div>
+            </div>
+        </form>
+          <!-- <form name="contact_form" class="default-form contact-form" action="/appointment/" method="post">
             {% csrf_token %}
             <div class="row">
               <div class="col-md-6">
@@ -46,7 +79,7 @@
                         <input class="form-control" type="email" name="email" placeholder="Email" required="">
                     </label>
                 </div>
-                <!--
+                
                 <div class="form-group">
                     <label>
                         <select class="form-control" name="subject">
@@ -55,8 +88,8 @@
                           <option>Psychological</option>
                         </select>
                     </label>
-                </div> -->
-              </div> <!--
+                </div>
+              </div> 
               <div class="col-md-6">
                 <div class="form-group">
                     <label>
@@ -76,19 +109,19 @@
                         </select>
                     </label>
                 </div>
-              </div> -->
-              <div class="col-md-12"> <!--
+              </div>
+              <div class="col-md-12"> 
                 <div class="form-group">
                     <label>
                         <textarea class="form-control" name="form_message" placeholder="Your Message" required=""></textarea>
                     </label>
-                </div> -->
+                </div>
                 <div class="form-group text-center">
                   <button type="submit" class="btn-style-one">submit now</button>
                 </div>
               </div>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
       <div class="col-lg-6 mb-4 mb-lg-0 order-0 order-lg-1">
@@ -148,37 +181,5 @@
   </div>
 </section>
 <!--End team section-->
-
-<!--footer-main-->
-<footer class="footer-main">
-  <div class="footer-bottom">
-    <div class="container clearfix">
-      <div class="copyright-text">
-        <p>&copy; Copyright 2021. Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p>
-      </div>
-      <ul class="footer-bottom-link">
-        <li>
-          <a href="{% url "index" %}">Home</a>
-        </li>
-        <li>
-          <a href="{% url "about" %}">About</a>
-        </li>
-        <li>
-          <a href="{% url "contact" %}">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</footer>
-<!--End footer-main-->
-
-<!-- scroll-to-top -->
-<div id="back-to-top" class="back-to-top">
-  <i class="fa fa-angle-up"></i>
-</div>
-
-</div>
-<!--End pagewrapper-->
-
 
 {% endblock %}

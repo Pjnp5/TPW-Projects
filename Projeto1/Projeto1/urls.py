@@ -24,7 +24,12 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('appointment/', views.appointment, name='appointment'),
+    path('appointments/', views.AppointmentsView, name='appointments'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html', next_page='/'), name='login'),
     path('logout', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('signup/', views.signup, name='signup')
+    path('signup/', views.signup, name='signup'),
+
+    # ADMIN
+    path('appointments/', views.AppointmentsView, name='admin/appointments'), # LISTA
+    path('contacts/', views.home, name='admin/contacts')
 ]

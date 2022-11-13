@@ -2,6 +2,8 @@ from django import forms
 from app.models import Appointment
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+
 
 # SignUp
 class CreateAccountForm(UserCreationForm):
@@ -36,10 +38,20 @@ class AccountPasswordUpdateForm(PasswordChangeForm):
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')
 
+
 # Schedule appointement
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class NewAppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ('name', 'email')
-        # fields = ("id", "user", "doctor", "dept", "date", "form_message")
+        fields = ('department', 'date', 'message')    
+        widgets = {
+            'date': DateInput()
+        }
 
+# Check scheduled appointments
+class CheckAppointmentsForm(forms.Form):
+    
+    pass
