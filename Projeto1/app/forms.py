@@ -1,8 +1,7 @@
 from django import forms
-from app.models import Appointment, Department, Patient
+from app.models import Appointment, Department
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
-from django.forms import ModelForm
 
 
 # SignUp
@@ -57,12 +56,17 @@ class NewDepartmentForm(forms.ModelForm):
         fields = ('name',) 
 
 class UpdateAppointmentForm(forms.Form):
+    department = forms.ModelChoiceField(queryset=Department.objects.all())
+    date = forms.DateField()
+    message = forms.CharField(max_length=200)
+
     class Meta:
         model = Appointment
-        fields = ('department', 'date', 'message')    
+        fields = ('deparment', 'date', 'message')
         widgets = {
             'date': DateInput()
-        }   
+        }
+  
 
 class searchForm(forms.Form):
     query = forms.CharField(label='', max_length=100, widget=forms.TextInput())

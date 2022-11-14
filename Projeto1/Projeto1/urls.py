@@ -34,14 +34,13 @@ urlpatterns = [
 
     path('appointments/', views.appointmentsView, name='appointments'),
     path('appointments/search', views.appointmentsSearchView, name='appointments/search'),
-    path('appointments/update', views.updateAppointments, name='appointments/update'),
+    path('appointments/update/<int:id>', views.updateAppointments, name='appointments/update'),
     path('appointments/delete', views.removeAppointments, name='appointments/delete'),
 
     # ADMIN
     path('departments/', views.departmentsView, name='departments'),
     path('departments/search', views.departmentsSearchView, name='departments/search'),
     path('departments/add', views.addNewDepartment, name='departments/add'),
-    path('departments/update', views.updateDepartments, name='departments/update'),
     path('departments/delete', views.removeDepartments, name='departments/delete'),
     path('contacts/', views.home, name='contacts')
 ]

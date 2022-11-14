@@ -34,7 +34,7 @@
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.message }}</td>
                 <td style="padding-left:auto;padding-right:auto;">
-                    <form id="UpdateForm{{ appointment.id }}" action="{% url "appointments/update" %}" method="POST">
+                    <form id="UpdateForm{{ appointment.id }}" action="{% url "appointments/update" id=appointment.id%}" method="GET">
                         <input type="hidden" value="{{ appointment.id }}" name="id">
                         {% csrf_token %}                 
                     <a class="nav-link" href="javascript:document.getElementById('UpdateForm{{ appointment.id }}').submit()"><i class="fa fa-retweet" aria-hidden="true"></form></i></a>

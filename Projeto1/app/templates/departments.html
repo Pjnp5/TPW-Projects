@@ -46,12 +46,11 @@
         </div>
     </div>
     
-    <table class="styled-table" style="min-width: 40%;">
+    <table class="styled-table" style="min-width: 30%;">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -60,11 +59,6 @@
             <tr>
                 <td>{{ department.id }}</td>
                 <td>{{ department.name }}</td>
-                <td style="padding-left:auto;padding-right:auto;">
-                    <form id="UpdateForm{{ department.id }}" action="{% url "departments/update" %}" method="POST">
-                        {% csrf_token %}                 
-                    <a class="nav-link" href="javascript:document.getElementById('UpdateForm{{ department.id }}').submit()update"><i class="fa fa-retweet" aria-hidden="true"></form></i></a>
-                </td>
                 <td>
                     <form id="RemoveForm{{ department.id }}" action="{% url "departments/delete" %}" method="POST">
                         <input type="hidden" value="{{ department.id }}" name="id">

@@ -8,9 +8,9 @@
 
 <!-- Checkout Section Begin -->
 <div class="limiter">
-    <div class="container-login100">
+    <div class="container-login100 p-t-55" >
         <div class="wrap-login100">
-            <div class="login100-form p-l-55 p-r-55 p-t-178">
+            <div class="login100-form p-l-55 p-r-55 p-t-125">
                 <span class="login100-form-title">Detalhes da conta</span>
             </div>
             {% if success %}
@@ -23,49 +23,39 @@
                     {{ invalid }}
                 </div>
             {% endif %}
-            {% comment %} <div class="card" style="margin: auto;">
-                <div class="card-header">
-                    <ul class="nav nav-pills card-header-pills">
-                        <li class="nav-item" style="margin: auto;">
-                            <button class="site-btn" href="#cardbodyGeral" data-toggle="collapse" data-target="#cardbodyGeral" aria-expanded="false" aria-controls="carbody">Alterar Informação Geral</button>
-                        </li>
-                        <br>
-                        <li class="nav-item" style="margin: auto;">
-                            <button class="site-btn" href="#cardbodyPasswd" data-toggle="collapse" data-target="#cardbodyPasswd" aria-expanded="false" aria-controls="carbody">Alterar Senha</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="collapse" id="cardbodyGeral">
+            <div class="card" style="margin: auto;">
+                <div class="" id="cardbodyGeral">
                     <div class="card-body" >
                         <h5 class="card-title" style="font-weight: bold;">Informação Geral da Conta</h5>
                         <hr>
                         <form action="." method="post">
                             {% csrf_token %}
                                 <div class="col-lg-8 col-md-6" style="margin-left: auto; margin-right: auto;">
+
                                     {% for field in form_general %}
                                         {% if field.name == 'password' %}
                                             {{ field.as_hidden }}
                                         {% else %}
                                         <div class="row checkout__input">
                                             <div class="col-md-4" >
-                                                <p>{{ field.label_tag }}</p>
+                                                <p class="txt2" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p> {{ field }}</p>
+                                            <div class="col-md-8" style="margin-bottom:16px;">
+                                                <p style="margin-bottom:0px;"> {{ field }}</p>
                                                 {% for error in field.errors %}
-                                                    <p class="alert alert-danger">{{ error }}</p>
+                                                    <p class="alert alert-danger" style="margin-bottom:0px;">{{ error }}</p>
                                                 {% endfor %}
                                                 {% if field.help_text %}
-                                                    <small style="color: grey">{{ field.help_text }}</small>
+                                                    <small class="smallUl">{{ field.help_text }}</small>
                                                 {% endif %}
-
                                             </div>
                                         </div>
                                         {% endif %}
                                     {% endfor %}
+
                                 <div class="row form-group">
-                                <div class="col-lg-8 col-md-6">
-                                    <button type="submit" class="site-btn">GUARDAR ALTERAÇÕES</button>
+                                <div class="container-login100-form-btn">
+                                    <button style="background: #48bdc5; color: white; border-color: #48bdc5;" type="submit" class="site-btn">GUARDAR ALTERAÇÕES</button>
                                 </div>
                             </div>
                         </form>
@@ -73,35 +63,36 @@
                 </div>
             </div>
             <div class="card">
-                <div class="collapse" id="cardbodyPasswd">
+                <div class="" id="cardbodyPasswd">
                     <div class="card-body" >
                         <h5 class="card-title" style="font-weight: bold;">Password</h5>
                         <hr>
                         <form action="." method="post">
                             {% csrf_token %}
-                                <div class="col-lg-8 col-md-6" style="margin-left: auto; margin-right: auto;">
-                                    {% for field in form_passwd %}
-                                        <div class="row checkout__input">
-                                            <div class="col-md-4" >
-                                                <p>{{ field.label_tag }}</p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p> {{ field }}</p>
-                                                {% if field.help_text %}
-                                                    <small style="color: grey">{{ field.help_text }}</small>
-                                                {% endif %}
-                                            </div>
+                            <div class="col-lg-8 col-md-6" style="margin-left: auto; margin-right: auto;">
+                                {% for field in form_passwd %}
+                                    <div class="row checkout__input">
+                                        <div class="col-md-4" >
+                                            <p class="txt2" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
                                         </div>
-                                    {% endfor %}
+                                        <div class="col-md-8" style="margin-bottom:16px;">
+                                            <p style="margin-bottom:0px;"> {{ field }}</p>
+                                            {% if field.help_text %}
+                                                <small class="smallUl">{{ field.help_text }}</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
                                 <div class="row form-group">
-                                <div class="col-lg-8 col-md-6">
-                                    <button type="submit" class="site-btn">GUARDAR ALTERAÇÕES</button>
+                                    <div class="container-login100-form-btn">
+                                        <button style="background: #48bdc5; color: white; border-color: #48bdc5;" type="submit" class="site-btn">GUARDAR ALTERAÇÕES</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div> {% endcomment %}
+            </div>
         </div>
     </div>
 </div>

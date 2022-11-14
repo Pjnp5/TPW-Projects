@@ -12,8 +12,6 @@
             <form class="login100-form p-l-55 p-r-55 p-t-178" action="." method="post">
                 {% csrf_token %}
                 <span class="login100-form-title">LOGIN</span>
-                    <!-- <input class="input100"type="text" name="email" placeholder="Email">
-                    <span class="focus-input100"></span> -->
                 <div class="row checkout__input">
                     <div class="col-md-4" >
                         <p class="txt2" style="text-align:center; margin-top: 8px">{{ form.username.label_tag }}</p>
@@ -46,25 +44,3 @@
 </div>
 
 {% endblock %}
-
-
-{% comment %} <div>
-    {% for field in form %}
-        <div class="row checkout__input">
-            <div class="col-md-4" >
-                <p class="txt2" style="text-align:center; margin-top: 8px">{{ field.label_tag }}</p>
-            </div>
-            <div class="col-md-8" style="margin-bottom:16px;">
-                <p style="margin-bottom:0px;"> {{ form.username }}</p>
-                {% if field.help_text %}
-                    <small class="smallUl">{{ field.help_text }}</small>
-                {% endif %}
-            </div>
-        </div>
-    {% endfor %}
-</div>
-<div class="row form-group">
-    <div class="container-login100-form-btn">
-        <button type="submit" class="login100-form-btn">CRIAR CONTA</button>
-    </div>
-</div> {% endcomment %}

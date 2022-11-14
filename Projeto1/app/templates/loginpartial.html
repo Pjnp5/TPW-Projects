@@ -47,9 +47,12 @@
                     </form>
                     <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-user"></i> Logout</a>
                 </li>
-                <li class="nav-item @@logout">
-                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
-                </li>
+                {% if user.is_superuser %}
+                {% else %}
+                    <li class="nav-item @@profile">
+                        <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         {% else %}
