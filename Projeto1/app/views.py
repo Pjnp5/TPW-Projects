@@ -136,7 +136,7 @@ def removeDepartments(request):
     if request.method == 'POST':
         department = Department.objects.filter(id=request.POST['id'])
         print("DEPARTMENTE DELETED: ", department.delete())
-    return redirect('department')
+    return redirect('departments')
 
 
 def appointmentsSearchView(request):
