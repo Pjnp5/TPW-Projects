@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-x*jz%#*l3w+jlmwl7$!_su3x$)uim_r=ct465#xfhz(15@w4r6
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-    'http://tiagosora.pythonanywhere.com']
+    'http://tiagosora.pythonanywhere.com',
+    'http://pjnp5.pythonanywhere.com']
 
 
 # Application definition
