@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lym%dyf9ygtt6nvdd88*ndri=g8sdn*&53!4*22lvcx^&i!xw9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'drf_api'
 ]
+
+AUTH_USER_MODEL = 'drf_api.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,7 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.AllowAny'#,
+        # 'drf_api.permissions.IsPatient',
+        # 'drf_api.permissions.IsDoctor',
+        # 'drf_api.permissions.IsDean',
     ]
 }
 

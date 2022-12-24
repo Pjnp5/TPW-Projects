@@ -15,7 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from drf_api import views
+
+# from drf_api.views import LoginView, LogoutView, UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # developed web services
+    path('ws/appointments', views.getAllAppointments),
+    # path('ws/appointment', views.getAppointment),
+    # path('ws/appointment/create', views.createAppointment),
+    # path('ws/appointment/update', views.updateAppointment),
+    # path('ws/appointment/delete/<int:id>', views.deleteAppointment),
+
+    # path('ws/departments', views.getAllDepartments),
+    # path('ws/department', views.getDepartment),
+    # path('ws/department/create', views.createDepartment),
+    # path('ws/department/update', views.updateDepartment),
+    # path('ws/department/delete/<int:id>', views.deleteDepartment),
+
+    # path('ws/signup', views.signup),
+    # path('ws/login', views.login),
+    # path('ws/logout', views.logout),
+    # path('ws/user', views),
 ]
