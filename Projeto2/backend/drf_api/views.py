@@ -704,7 +704,8 @@ def login(request):
     }
     token = jwt.encode(payload, 'secret', algorithm='HS256')
 
-    response = Response()
+    # response = Response()
+    response = Response(status=status.HTTP_202_ACCEPTED)
     response.set_cookie(key='jwt', value=token, httponly=True)
     response.data = {
         'jwt': token,
@@ -719,3 +720,18 @@ def logout(request):
     response = Response(status=status.HTTP_202_ACCEPTED)
     response.delete_cookie('jwt')
     return response
+
+#wip
+@api_view(['GET'])
+def getUser(request):
+    token = request.headers['jwt']
+
+    if not token: raise AuthenticationFailed()
+    try:
+        payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+    except jwt.ExpiredSignatureError: raise AuthenticationFailed()
+
+    user = User.objects.get(id=payload['id'])
+    serializer = UserSerializer(user)
+
+    return Response(serializer.data)
