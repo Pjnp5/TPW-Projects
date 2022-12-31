@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BasePageComponent } from './components/base-page/base-page.component';
+import { IndexPageComponent } from './components/index-page/index-page.component';
 
 const routes: Routes = [
   // Here we insert the routes
-  {path: '', component: BasePageComponent, pathMatch: "full"}, // Create the base page
+  {path: '', component: IndexPageComponent, pathMatch: "full"}, // Create the base page
 
 ];
 
