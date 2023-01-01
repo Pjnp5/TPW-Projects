@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-about-page',
@@ -9,6 +10,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 export class AboutPageComponent implements OnInit {
 
   faPlay = faPlay
+  faArrowDown = faArrowDown
   constructor() { }
 
   ngOnInit(): void {

@@ -308,7 +308,7 @@ li {
   line-height: 57px;
   border: 1px solid #5ec5cc;
 }
-.header-uper .contact-info .item .icon-box i:before {
+.header-uper .contact-info .item .icon-box .icon {
   color: #5ec5cc;
   font-size: 22px;
 }
@@ -513,7 +513,6 @@ button:focus {
   transition: all 0.3s ease;
 }
 .accordion-section .accordion-holder .card .card-header h4 a:before {
-  content: "\f077";
   position: absolute;
   right: 20px;
   font-family: "Font Awesome 5 Free";
@@ -3547,3 +3546,5 @@ button:focus {
   font-size: 40px;
   color: #fff;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
