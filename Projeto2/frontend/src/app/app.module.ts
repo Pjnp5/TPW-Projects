@@ -19,7 +19,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatSelectModule } from '@angular/material/select'
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs'; 
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,10 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+    MatSelectModule,
+    MatCardModule,
+    MatTabsModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

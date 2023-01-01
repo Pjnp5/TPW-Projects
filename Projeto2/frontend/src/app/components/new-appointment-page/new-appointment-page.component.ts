@@ -9,6 +9,8 @@ import { FormBuilder, FormControl } from '@angular/forms';
 export class NewAppointmentPageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
+  objects = ["cona", "boa"]
+
   profileForm = this.formBuilder.group({
     department: [''],
     date: [''],
