@@ -23,27 +23,59 @@
     <div class="row">
       <div class="col-lg-6 order-1 order-lg-0">
         <div class="style-two pl-0 pr-0 pr-lg-4">
+          <br />
           <div class="section-title">
             <h3>Request <span>Appointment</span></h3>
           </div>
           <form [formGroup]="profileForm">
             <mat-form-field>
               <mat-label>Departments</mat-label>
-              <mat-select placeholder="Departmenrts">
-                <mat-option *ngFor="let object of objects" value="{{object}}">{{object}}</mat-option>
+              <mat-select
+                placeholder="Departmenrts"
+                formControlName="department"
+              >
+                <mat-label>Departments</mat-label>
+                <mat-option
+                  *ngFor="let object of objects"
+                  value="{{ object }}"
+                  >{{ object }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
+
             <mat-form-field>
-              <textarea formControlName="message" matInput placeholder="message"></textarea>
+              <mat-label>Date</mat-label>
+              <input
+                formControlName="date"
+                matInput
+                [matDatepicker]="myDatePicker"
+                [min]="minDate"
+              />
+              <mat-datepicker-toggle
+                [for]="myDatePicker"
+                matSuffix
+              ></mat-datepicker-toggle>
+              <mat-datepicker #myDatePicker></mat-datepicker>
             </mat-form-field>
-          </form>
-          <div class="row">
-            <div class="container-login100-form-btn" style="height: 10px; padding-right: 120px">
-              <button type="submit" class="btn-style-one">
-                Add Appointment
-              </button>
+
+            <mat-form-field>
+              <textarea
+                formControlName="message"
+                matInput
+                placeholder="message"
+              ></textarea>
+            </mat-form-field>
+            <div class="row">
+              <div
+                class="container-login100-form-btn"
+                style="height: 10px; padding-right: 120px"
+              >
+                <button (click)="saveForm()" class="btn-style-one">
+                  Add Appointment
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="col-lg-6 mb-4 mb-lg-0 order-0 order-lg-1">

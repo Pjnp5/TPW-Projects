@@ -7,15 +7,20 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./new-appointment-page.component.css'],
 })
 export class NewAppointmentPageComponent implements OnInit {
+  minDate = new Date();
   constructor(private formBuilder: FormBuilder) {}
 
-  objects = ["cona", "boa"]
+  objects = ['cona', 'boa'];
 
   profileForm = this.formBuilder.group({
     department: [''],
     date: [''],
     message: [''],
   });
+
+  saveForm() {
+    console.log('Form data is: ', this.profileForm.value);
+  }
 
   ngOnInit(): void {}
 }
