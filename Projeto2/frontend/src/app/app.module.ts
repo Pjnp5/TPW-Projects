@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { DepartmentService } from './services/department/department.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MyAppointmentsPageComponent } from './components/my-appointments-page/my-appointments-page.component';
+import { UpdateAppointmentPageComponent } from './components/update-appointment-page/update-appointment-page.component';
+import { MyPrescriptionsPageComponent } from './components/my-prescriptions-page/my-prescriptions-page.component';
+import { DepartmentsPageComponent } from './components/departments-page/departments-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +40,10 @@ import { MatIconModule } from '@angular/material/icon';
     ContactPageComponent,
     LoginComponent,
     SignupComponent,
+    MyAppointmentsPageComponent,
+    UpdateAppointmentPageComponent,
+    MyPrescriptionsPageComponent,
+    DepartmentsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatCheckboxModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [DepartmentService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

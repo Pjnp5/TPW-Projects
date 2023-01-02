@@ -13,6 +13,20 @@ from rest_framework.response import Response
 # Create your views here.
 
 #
+#   U S E R S
+#
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
+def getUserById(request, id):
+    try:
+        user = User.objects.get(id=id)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+#
 #   P A T I E N T E S
 #
 
@@ -359,6 +373,7 @@ def getAppointment(request, id):
 @api_view(['POST'])
 # @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def createAppointment(request):
+    print(request.data)
     try:
         user = User.objects.get(id=request.data.get("patient"))
     except User.DoesNotExist:
@@ -641,6 +656,7 @@ def deletePrescription(request, id):
 
 @api_view(['POST'])
 def signup(request):
+    print("signup")
     try:
         first_name = request.data["first_name"]
         last_name = request.data["last_name"]
@@ -685,7 +701,6 @@ def signup(request):
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-# wip
 @api_view(['POST'])
 def login(request):
     email = request.data['email']
@@ -713,22 +728,14 @@ def login(request):
 
     return response
 
-# wip
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def logout(request):
-    response = Response(status=status.HTTP_202_ACCEPTED)
-    response.delete_cookie('jwt')
-    return response
 
-#wip
 @api_view(['GET'])
 def getUser(request):
     token = request.headers['jwt']
 
     if not token: raise AuthenticationFailed()
     try:
-        payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+        payload = jwt.decode(token, 'secret', algorithms=['HS256'])
     except jwt.ExpiredSignatureError: raise AuthenticationFailed()
 
     user = User.objects.get(id=payload['id'])

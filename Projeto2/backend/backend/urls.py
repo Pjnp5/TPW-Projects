@@ -59,6 +59,7 @@ urlpatterns = [
 
     path('ws/signup', views.signup),
     path('ws/login', views.login),
-    path('ws/logout', views.logout),
     path('ws/user', views.getUser),
+    path('ws/user/<int:id>', views.getUserById),
+
 ]

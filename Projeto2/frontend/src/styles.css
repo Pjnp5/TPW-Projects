@@ -3350,9 +3350,9 @@ button:focus {
   align-items: center;
   padding: 0 20px;
   width: 100%;
-  height: 50px;
+  height: 30px;
   background-color: #48bdc5;
-  border-radius: 25px;
+  border: 0;
 
   font-family: sans-serif;
   font-size: 15px;
@@ -3367,7 +3367,7 @@ button:focus {
 }
 
 .login100-form-btn:hover {
-  background-color: #1b3815;
+  background-color: #0d1a2f;
 }
 
 
@@ -3495,8 +3495,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   top: 0;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
   display: block;
   background-position: center;
   background-repeat: no-repeat;
@@ -3509,8 +3507,9 @@ mat-card {
   margin: 10% auto;
   border-radius: 8px;
 }
-mat-form-field, mat-checkbox {
-  width: 80%;
+mat-form-field, mat-checkbox, .gotosignup {
+  padding: 0 10%;
+  width: 100%;
   display: block;
   margin: auto;
 }
@@ -3521,6 +3520,6 @@ mat-card-content {
 .login-button {
   margin-top: 20px;
   display: block;
-  width: 80%;
+  width: 40%;
   margin: 20px auto;
 }

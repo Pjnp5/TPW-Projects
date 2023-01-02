@@ -3,7 +3,7 @@
     <div class="row align-items-center">
       <div class="col-xl-4 col-lg-3">
         <div class="logo">
-          <a href="index.html">
+          <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
             <img loading="lazy" class="img-fluid" src="/assets/images/logo.png" alt="logo">
           </a>
         </div>
@@ -44,24 +44,43 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">HOME</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userType != 'doctor' && userType != 'dean'">
         <a class="nav-link" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">ABOUT</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userType == 'patient'">
         <a class="nav-link" routerLink="/appointment" routerLinkActive="active" ariaCurrentWhenActive="page">NEW APPOINTMENT</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userType == 'patient'">
+        <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">MY APPOINTMENTS</a>
+      </li>
+
+      <li class="nav-item" *ngIf="userType == 'doctor'">
+        <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">DEPARTMENT</a>
+      </li>
+      <li class="nav-item" *ngIf="userType == 'doctor'">
+        <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">MY PRESCRIPTIONS</a>
+      </li>
+
+      <li class="nav-item" *ngIf="userType != 'doctor' && userType != 'dean'">
         <a class="nav-link" routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page">CONTACT</a>
       </li>
     </ul>
   </div>
-  <div class="navbar w-100 order-3 dual-collapse2"  style="padding-right:20%">
-    <ul class="navbar-nav ml-auto">
+  <div class="navbar w-50 order-3 dual-collapse2"  style="padding-right:20%">
+    <ul class="navbar-nav ml-auto" *ngIf="!is_authenticated">
       <li class="nav-item">
         <a class="nav-link" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">SIGN UP</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">LOGIN</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="is_authenticated">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">PROFILE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">LOGOUT</a>
       </li>
     </ul>
   </div>

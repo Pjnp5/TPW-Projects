@@ -40,7 +40,7 @@ class Dean(models.Model):
         return str(f"Dean [ID: {self.user.id}, Name: {self.user.first_name} {self.user.last_name}, Email: {self.user.email}]")
 
 class Department(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50, primary_key=True)
     doctors = models.ManyToManyField(Doctor)
 
     def __str__(self):

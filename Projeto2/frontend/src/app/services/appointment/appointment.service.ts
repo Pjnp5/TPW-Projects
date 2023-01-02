@@ -21,6 +21,7 @@ export class AppointmentService {
 
   createAppointment(appointment: Appointment): Observable<any> {
     const url = this.baseURL + 'appointment/create';
+
     return this.http.post<Appointment[]>(url, appointment, this.httpOptions);
   }
 
@@ -29,8 +30,9 @@ export class AppointmentService {
     return this.http.put<Appointment[]>(url, appointment, this.httpOptions);
   }
 
-  deleteAppointment(appointment: Appointment): Observable<any> {
-    const url = this.baseURL + 'appointment/delete' + appointment.id;
+  deleteAppointment(id: number): Observable<any> {
+    const url = this.baseURL + 'appointment/delete/' + id;
+    console.log(url)
     return this.http.delete<Appointment>(url, this.httpOptions);
   }
 

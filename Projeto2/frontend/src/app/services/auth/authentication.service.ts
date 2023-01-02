@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Emitter } from 'src/app/emitters/emitters';
 import { User } from 'src/app/models/User';
@@ -13,11 +14,14 @@ export class AuthenticationService {
   private baseURL = environment.API_URL_TEMPLATE;
   private httpOptions = environment.HTTP_OPTIONS;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    ) {}
 
   signup(data: {}): Observable<any> {
     const url = this.baseURL + 'signup';
-    return this.http.post(url, data, this.httpOptions);
+    return this.http.post(url, data, {withCredentials: true});
   }
 
   login(data: {}): Observable<any> {
@@ -25,13 +29,13 @@ export class AuthenticationService {
     return this.http.post(url, data, {withCredentials: true});
   }
 
-  logout(): Observable<any> {
-    const url = this.baseURL + 'logout';
-    return this.http.post(url, this.httpOptions);
+  logout(): Observable<any> | any{
+    document.cookie = "jwt= ; Max-Age=0"
+    Emitter.isAuthenticated.emit(false);
+    this.router.navigate([""])
   }
 
-  //wip
-  getJWTCookie() : string { 
+  getJWTCookie() : string {
     return document.cookie.split(';').map(c => c.trim()).filter(
       c => {
         return c.substring(0, 4) === `jwt=`;
@@ -40,9 +44,8 @@ export class AuthenticationService {
       })[0] || ""
   }
 
-  //wip
   isAuthenticated(): void {
-    const url = this.baseURL + 'getUser';
+    const url = this.baseURL + 'user';
 
     const http_options = {
       withCredentials: true,
@@ -54,11 +57,20 @@ export class AuthenticationService {
     if (this.getJWTCookie()) {
       this.http.get(url, http_options).subscribe(
         response => {
-          console.log(response);
           Emitter.isAuthenticated.emit(true);
           // If this doesnt work
           const user : User = response as User
           Emitter.userId.emit(user.id);
+
+          if (user.is_patient) {
+            Emitter.usertype.emit("patient")
+          }
+          if (user.is_doctor) {
+            Emitter.usertype.emit("doctor")
+          }
+          if (user.is_dean) {
+            Emitter.usertype.emit("dean")
+          }
           // Uncomment this:
           // // ts-ignore
           // Emitter.userId.emit(response["id"]);

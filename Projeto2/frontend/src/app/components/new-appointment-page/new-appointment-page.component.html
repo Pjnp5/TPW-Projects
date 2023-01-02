@@ -18,27 +18,25 @@
 <!--End Page Title-->
 
 <!-- Section -->
-<section class="pb-0">
+<section class="section style-three pb-0">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 order-1 order-lg-0">
-        <div class="style-two pl-0 pr-0 pr-lg-4">
-          <br />
-          <div class="section-title">
+        <div class="contact-area style-two pl-0 pr-0 pr-lg-4">
+          <div class="section-title" style="padding: 0 10%;">
             <h3>Request <span>Appointment</span></h3>
           </div>
-          <form [formGroup]="profileForm">
+          <form class="default-form contact-form" [formGroup]="profileForm">
             <mat-form-field>
               <mat-label>Departments</mat-label>
               <mat-select
                 placeholder="Departmenrts"
                 formControlName="department"
               >
-                <mat-label>Departments</mat-label>
                 <mat-option
-                  *ngFor="let object of objects"
-                  value="{{ object }}"
-                  >{{ object }}</mat-option
+                  *ngFor="let department of departments"
+                  value="{{ department.name }}"
+                  >{{ department.name }}</mat-option
                 >
               </mat-select>
             </mat-form-field>
@@ -62,14 +60,11 @@
               <textarea
                 formControlName="message"
                 matInput
-                placeholder="message"
+                placeholder="Message"
               ></textarea>
             </mat-form-field>
-            <div class="row">
-              <div
-                class="container-login100-form-btn"
-                style="height: 10px; padding-right: 120px"
-              >
+            <div class="row form-group">
+              <div class="container-login100-form-btn" style="height: 10px; padding-top: 20px" >
                 <button (click)="saveForm()" class="btn-style-one">
                   Add Appointment
                 </button>
