@@ -52,8 +52,11 @@ export class SignupComponent implements OnInit {
       "email":email,
       "password":password
     };
-    this.authService.signup(data).subscribe();
-    this.router.navigate(["login"]).then(() => window.location.reload())
+    this.authService.signup(data).subscribe(
+      () => {
+        this.router.navigate(["login"]).then(() => window.location.reload())
+      }
+    );
   }
 
   ngOnInit(): void {

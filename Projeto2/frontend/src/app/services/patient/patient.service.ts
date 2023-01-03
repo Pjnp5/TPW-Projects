@@ -19,9 +19,9 @@ export class PatientService {
     return this.http.get<Patient[]>(url);
   }
 
-  updatePatient(patient: Patient): Observable<any> {
-    const url = this.baseURL + 'patient/update/'  + patient.user.id;
-    return this.http.put<Patient[]>(url, patient, this.httpOptions);
+  updatePatient(id : number, data: {}): Observable<any> {
+    const url = this.baseURL + 'patient/update/'  + id;
+    return this.http.put<Patient[]>(url, data, this.httpOptions);
   }
 
   getPatient(id: number): Observable<Patient> {

@@ -10,19 +10,29 @@ import { MyAppointmentsPageComponent } from './components/my-appointments-page/m
 import { UpdateAppointmentPageComponent } from './components/update-appointment-page/update-appointment-page.component';
 import { MyPrescriptionsPageComponent } from './components/my-prescriptions-page/my-prescriptions-page.component';
 import { DepartmentsPageComponent } from './components/departments-page/departments-page.component';
+import { MyDepartmentsPageComponent } from './components/my-departments-page/my-departments-page.component';
+import { DoctorsPageComponent } from './components/doctors-page/doctors-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { CreatePrescriptionPageComponent } from './components/create-prescription-page/create-prescription-page.component';
+import { UpdateDepartmentPageComponent } from './components/update-department-page/update-department-page.component';
 
 const routes: Routes = [
   // Here we insert the routes
   { path: '', component: IndexPageComponent, pathMatch: 'full' }, // Create the base page
   { path: 'about', component: AboutPageComponent },
   { path: 'contact', component: ContactPageComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   { path: 'appointment', component: NewAppointmentPageComponent },
   { path: 'myappointments', component: MyAppointmentsPageComponent},
   { path: 'myappointments/updateappointment/:id', component: UpdateAppointmentPageComponent},
-  { path: 'departments', component: DepartmentsPageComponent},
   { path: 'myprescriptions', component: MyPrescriptionsPageComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
+  { path: 'myappointmentsdoctor', component: MyDepartmentsPageComponent},
+  { path: 'departments', component: DepartmentsPageComponent},
+  { path: 'doctors', component: DoctorsPageComponent},
+  { path: 'profile', component: ProfilePageComponent},
+  { path: 'createprescription', component: CreatePrescriptionPageComponent},
+  { path: 'departments/updatedepartment/:str', component: UpdateDepartmentPageComponent}
 ];
 
 @NgModule({

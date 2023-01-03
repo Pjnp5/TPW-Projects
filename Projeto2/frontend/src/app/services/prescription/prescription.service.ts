@@ -43,4 +43,14 @@ export class PrescriptionService {
     const url = this.baseURL + 'prescription/' + id;
     return this.http.get<Prescription>(url);
   }
+
+  getPatientPrescriptions(id: number): Observable<Prescription[]> {
+    const url = this.baseURL + 'prescription/patient/' + id;
+    return this.http.get<Prescription[]>(url);
+  }
+
+  getDoctorPrescriptions(id: number): Observable<Prescription[]> {
+    const url = this.baseURL + 'prescription/doctor/' + id;
+    return this.http.get<Prescription[]>(url);
+  }
 }

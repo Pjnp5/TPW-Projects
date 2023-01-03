@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 import { Emitter } from 'src/app/emitters/emitters';
-import { ThisReceiver } from '@angular/compiler';
 import { Appointment } from 'src/app/models/Appointment';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 
 @Component({
   selector: 'app-my-appointments-page',
@@ -10,19 +10,19 @@ import { Appointment } from 'src/app/models/Appointment';
   styleUrls: ['./my-appointments-page.component.css']
 })
 export class MyAppointmentsPageComponent implements OnInit {
-  appointments: Appointment[];
+  appointments!: Appointment[];
+  control! : Appointment[]
   userId: any;
   userType: any;
 
   constructor(
     private appointmentService : AppointmentService,
+    private AuthService: AuthenticationService,
   ) {
-   this.appointments = []
+    this.appointments = []
   }
 
-
   deleteAppointment(appointmentId: any){
-    console.log(appointmentId)
     this.appointmentService.deleteAppointment(appointmentId).subscribe()
     window.location.reload()
   }
@@ -30,21 +30,14 @@ export class MyAppointmentsPageComponent implements OnInit {
   ngOnInit(): void {
     Emitter.userId.subscribe(
       u => {
-        this.userId = u;
-    });
-    Emitter.usertype.subscribe(
-      t => {
-        this.userType = t;
-    });
-    this.appointmentService.getAllAppointments().subscribe(
-      (appointments : Appointment[]) => {
-        for (let a of appointments){
-          if (this.userType == "patient" && a.patient == this.userId){
-            this.appointments.push(a);
-          }
+        if (u != undefined) {
+          this.appointmentService.getPatientAppointments(u).subscribe(
+            (app) => {
+              this.appointments = app
+            }
+          )
         }
-      }
-    )
+    }); 
+    this.AuthService.isAuthenticated();
   }
-
 }

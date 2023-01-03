@@ -30,7 +30,7 @@
               <span>+ (88017) - 123 - 4567</span>
             </li>
           </ul>
-          <div class="link-btn text-center text-lg-right">
+          <div class="link-btn text-center text-lg-right" *ngIf="userType == 'patient'">
             <a routerLink="/appointment" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn-style-one">New Appointment</a>
           </div>
         </div>
@@ -48,17 +48,21 @@
         <a class="nav-link" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">ABOUT</a>
       </li>
       <li class="nav-item" *ngIf="userType == 'patient'">
-        <a class="nav-link" routerLink="/appointment" routerLinkActive="active" ariaCurrentWhenActive="page">NEW APPOINTMENT</a>
-      </li>
-      <li class="nav-item" *ngIf="userType == 'patient'">
         <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">MY APPOINTMENTS</a>
       </li>
 
       <li class="nav-item" *ngIf="userType == 'doctor'">
-        <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">DEPARTMENT</a>
+        <a class="nav-link" routerLink="/myappointmentsdoctor" routerLinkActive="active" ariaCurrentWhenActive="page">MY APPOINTMENTS</a>
       </li>
-      <li class="nav-item" *ngIf="userType == 'doctor'">
-        <a class="nav-link" routerLink="/myappointments" routerLinkActive="active" ariaCurrentWhenActive="page">MY PRESCRIPTIONS</a>
+      <li class="nav-item" *ngIf="userType == 'doctor' || userType == 'patient'">
+        <a class="nav-link" href="/myprescriptions">MY PRESCRIPTIONS</a>
+      </li>
+
+      <li class="nav-item" *ngIf="userType == 'dean'">
+        <a class="nav-link" routerLink="/departments" routerLinkActive="active" ariaCurrentWhenActive="page">DEPARTMENTS</a>
+      </li>
+      <li class="nav-item" *ngIf="userType == 'dean'">
+        <a class="nav-link" routerLink="/doctors" routerLinkActive="active" ariaCurrentWhenActive="page">DOCTORS</a>
       </li>
 
       <li class="nav-item" *ngIf="userType != 'doctor' && userType != 'dean'">
@@ -77,7 +81,7 @@
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="is_authenticated">
       <li class="nav-item">
-        <a class="nav-link" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">PROFILE</a>
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">PROFILE</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" (click)="logout()">LOGOUT</a>

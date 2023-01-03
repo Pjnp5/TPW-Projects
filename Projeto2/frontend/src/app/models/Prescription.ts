@@ -3,12 +3,12 @@ import { Patient } from "./Patient";
 
 export class Prescription {
     id: number;
-    patient: Patient;
-    doctor: Doctor;
+    patient: number;
+    doctor: number;
     date: string;
     message: string;
   
-    constructor(id: number, patient: Patient, doctor: Doctor, date: string, message: string) {
+    constructor(id: number, patient: number, doctor: number, date: string, message: string) {
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;

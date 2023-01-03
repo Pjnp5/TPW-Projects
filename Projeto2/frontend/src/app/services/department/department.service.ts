@@ -14,9 +14,9 @@ export class DepartmentService {
 
   constructor(private http: HttpClient) { }
 
-  getAllDepartments(): Observable<Department[]> {
+  getAllDepartments(): Observable<any[]> {
     const url = this.baseURL + 'departments';
-    return this.http.get<Department[]>(url);
+    return this.http.get<any[]>(url);
   }
 
   createDepartment(department: Department): Observable<any> {
@@ -42,5 +42,10 @@ export class DepartmentService {
   getDepartment(name: string): Observable<Department> {
     const url = this.baseURL + 'department/' + name;
     return this.http.get<Department>(url);
+  }
+
+  getDoctorDepartments(id: number): Observable<Department[]> {
+    const url = this.baseURL + 'department/doctor/' + id;
+    return this.http.get<Department[]>(url);
   }
 }

@@ -66,19 +66,19 @@ def updatePatient(request, id):
 
     data = serializer.data
     updated = False
-    if request.data.get("first_name"):
+    if request.data.get("first_name") and request.data.get("first_name") != "":
         data["first_name"] = request.data.get("first_name")
         updated = True
-    if request.data.get("last_name"):
+    if request.data.get("last_name") and request.data.get("last_name") != "":
         data["last_name"] = request.data.get("last_name")
         updated = True
-    if request.data.get("email"):
+    if request.data.get("email") and request.data.get("email") != "":
         data["email"] = request.data.get("email")
         updated = True
-    if request.data.get("username"):
+    if request.data.get("username") and request.data.get("username") != "":
         data["username"] = request.data.get("username")
         updated = True
-    if request.data.get("password"):
+    if request.data.get("password") and request.data.get("password") != "":
         data["password"] = request.data.get("password")
         updated = True
 
@@ -168,6 +168,7 @@ def getDoctor(request, id):
 @api_view(['PUT'])
 # @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def updateDoctor(request, id):
+    print(request.data)
     try:
         user = User.objects.get(id=id)
     except User.DoesNotExist:
@@ -370,6 +371,18 @@ def getAppointment(request, id):
     serializer = AppointmentSerializer(appointment)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getPatientAppointments(request, id):
+    appoitments = Appointment.objects.filter(patient=id)
+    serializer = AppointmentSerializer(appoitments, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getDepartmentAppointments(request, name):
+    appoitments = Appointment.objects.filter(department=name)
+    serializer = AppointmentSerializer(appoitments, many=True)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 # @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def createAppointment(request):
@@ -393,10 +406,15 @@ def createAppointment(request):
     else :
         message = "General Appointment"
 
+    if request.data.get("date"):
+        date = datetime.datetime.strptime(request.data.get("date"), '%Y-%m-%d').date()
+    else :
+        date = datetime.date.today()
+
     data = {}
     data["patient"] = patient.pk
     data["department"] = department.pk
-    data["date"] = datetime.date.today()
+    data["date"] = date
     data["message"] = message
 
     serializer = AppointmentSerializer(data=data)
@@ -483,6 +501,21 @@ def getDepartment(request, name):
     serializer = DepartmentSerializer(department)
     return Response(serializer.data)
 
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
+def getDoctorDepartments(request, id):
+    try:
+        user = User.objects.get(id=id)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    try:
+        doctor = Doctor.objects.get(user=user)
+    except Doctor.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    departments = Department.objects.filter(doctors__in=[doctor])
+    serializer = DepartmentSerializer(departments, many=True)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 # @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def createDepartment(request):
@@ -553,6 +586,18 @@ def getPrescription(request, id):
     serializer = PrescriptionSerializer(prescription)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getPatientPrescriptions(request, id):
+    prescriptions = Prescription.objects.filter(patient=id)
+    serializer = PrescriptionSerializer(prescriptions, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getDoctorPrescriptions(request, id):
+    prescriptions = Prescription.objects.filter(doctor=id)
+    serializer = PrescriptionSerializer(prescriptions, many=True)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 # @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def createPrescription(request):
@@ -577,10 +622,7 @@ def createPrescription(request):
     data = {}
     data["patient"] = patient.pk
     data["doctor"] = doctor.pk
-    if request.data.get("date") == None:
-        data["date"] = datetime.date.today()
-    else:
-        data["date"] = request.data.get("date")
+    data["date"] = datetime.date.today()
     data["message"] = request.data.get("message")
 
     serializer = PrescriptionSerializer(data=data)

@@ -1,9 +1,8 @@
 
-<div style="height: calc(100vh - 169px);">
+<div style="height: calc(100vh - 169px);" *ngIf="appointments">
     <table class="styled-table">
         <thead>
             <tr>
-                <th>Patient</th>
                 <th>Department</th>
                 <th>Date</th>
                 <th>Mensage</th>
@@ -12,13 +11,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let appointment of appointments">
-                <td>{{ appointment.patient }}</td>
+            <tr *ngFor="let appointment of appointments" >
                 <td>{{ appointment.department }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.message }}</td>
                 <td style="padding-left:auto;padding-right:auto;">
-                    <a  class="nav-link" routerLink="updateappointment/{{appointment.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>refresh</mat-icon></a>
+                    <a  class="nav-link" routerLink="updateappointment/{{appointment.id}}" class="nav-link"><mat-icon>refresh</mat-icon></a>
                 </td>
                 <td>
                     <a (click)="deleteAppointment(appointment.id)" class="nav-link"><mat-icon>delete</mat-icon></a>
@@ -26,4 +24,4 @@
             </tr>
         </tbody>
     </table>
-</div>}}
+</div>

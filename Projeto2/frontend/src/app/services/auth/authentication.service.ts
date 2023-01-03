@@ -19,6 +19,11 @@ export class AuthenticationService {
     private router: Router,
     ) {}
 
+  getUserById(id: number): Observable<User> {
+    const url = this.baseURL + 'user/' + id;
+    return this.http.get<User>(url);
+  }
+
   signup(data: {}): Observable<any> {
     const url = this.baseURL + 'signup';
     return this.http.post(url, data, {withCredentials: true});
@@ -32,7 +37,7 @@ export class AuthenticationService {
   logout(): Observable<any> | any{
     document.cookie = "jwt= ; Max-Age=0"
     Emitter.isAuthenticated.emit(false);
-    this.router.navigate([""])
+    this.router.navigate([""]).then(() => window.location.reload())
   }
 
   getJWTCookie() : string {
@@ -55,10 +60,12 @@ export class AuthenticationService {
     };
 
     if (this.getJWTCookie()) {
+      let valid : boolean = false;
       this.http.get(url, http_options).subscribe(
         response => {
+          valid = true;
           Emitter.isAuthenticated.emit(true);
-          // If this doesnt work
+
           const user : User = response as User
           Emitter.userId.emit(user.id);
 
@@ -71,11 +78,15 @@ export class AuthenticationService {
           if (user.is_dean) {
             Emitter.usertype.emit("dean")
           }
-          // Uncomment this:
-          // // ts-ignore
-          // Emitter.userId.emit(response["id"]);
         }
       )
+
+      if (valid == false) {
+        Emitter.isAuthenticated.emit(false);
+        Emitter.usertype.emit("not_authenticated")
+        Emitter.userId.emit(undefined);
+      }
+
     }
   }
 }

@@ -32,7 +32,6 @@ export class AppointmentService {
 
   deleteAppointment(id: number): Observable<any> {
     const url = this.baseURL + 'appointment/delete/' + id;
-    console.log(url)
     return this.http.delete<Appointment>(url, this.httpOptions);
   }
 
@@ -44,5 +43,15 @@ export class AppointmentService {
   getAppointment(id: number): Observable<Appointment> {
     const url = this.baseURL + 'appointment/' + id;
     return this.http.get<Appointment>(url);
+  }
+
+  getPatientAppointments(id: number): Observable<Appointment[]> {
+    const url = this.baseURL + 'appointment/patient/' + id;
+    return this.http.get<Appointment[]>(url);
+  }
+
+  getDepartmentAppointments(name: string): Observable<Appointment[]> {
+    const url = this.baseURL + 'appointment/department/' + name;
+    return this.http.get<Appointment[]>(url);
   }
 }

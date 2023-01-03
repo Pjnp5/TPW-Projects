@@ -24,9 +24,9 @@ export class DoctorService {
     return this.http.post<Doctor[]>(url, doctor, this.httpOptions);
   }
 
-  updateDoctor(doctor: Doctor): Observable<any> {
-    const url = this.baseURL + 'doctor/update/'  + doctor.user.id;
-    return this.http.put<Doctor[]>(url, doctor, this.httpOptions);
+  updateDoctor(id: number, data: {}): Observable<any> {
+    const url = this.baseURL + 'doctor/update/'  + id;
+    return this.http.put<Doctor[]>(url, data, this.httpOptions);
   }
 
   deleteDoctor(doctor: Doctor): Observable<any> {

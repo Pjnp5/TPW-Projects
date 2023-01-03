@@ -37,9 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(): void {
-    this.authService.login(this.Loginform.value).subscribe(d => {this.setCookie("jwt", d.jwt)})
-    this.router.navigate([""]).then(() => window.location.reload())
-    
+    this.authService.login(this.Loginform.value).subscribe(
+      d => {
+        this.setCookie("jwt", d.jwt);
+        this.router.navigate([""]).then(()=>window.location.reload());
+      }
+    );
   }
 
   ngOnInit(): void {

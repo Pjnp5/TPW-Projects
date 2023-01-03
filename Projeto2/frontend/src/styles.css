@@ -3523,3 +3523,36 @@ mat-card-content {
   width: 40%;
   margin: 20px auto;
 }
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.profile-button {
+  background: #48bdc5;
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: #0d1a2f
+}
+
+.profile-button:focus {
+  background: #0d1a2f;
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #0d1a2f;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #0d1a2f;
+  cursor: pointer
+}
+
+.labels {
+  font-size: 11px
+}

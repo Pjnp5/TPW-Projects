@@ -44,18 +44,23 @@ urlpatterns = [
     path('ws/appointment/update/<int:id>', views.updateAppointment),
     path('ws/appointment/delete/<int:id>', views.deleteAppointment),
     path('ws/appointment/<int:id>', views.getAppointment),
+    path('ws/appointment/patient/<int:id>', views.getPatientAppointments),
+    path('ws/appointment/department/<str:name>', views.getDepartmentAppointments),
 
     path('ws/departments', views.getAllDepartments),
     path('ws/department/create', views.createDepartment),
     path('ws/department/update/<str:name>', views.updateDepartment),
     path('ws/department/delete/<str:name>', views.deleteDepartment),
     path('ws/department/<str:name>', views.getDepartment),
+    path('ws/department/doctor/<int:id>', views.getDoctorDepartments),
 
     path('ws/prescriptions', views.getAllPrescriptions),
     path('ws/prescription/create', views.createPrescription),
     path('ws/prescription/update/<int:id>', views.updatePrescription),
     path('ws/prescription/delete/<int:id>', views.deletePrescription),
     path('ws/prescription/<int:id>', views.getPrescription),
+    path('ws/prescription/patient/<int:id>', views.getPatientPrescriptions),
+    path('ws/prescription/doctor/<int:id>', views.getDoctorPrescriptions),
 
     path('ws/signup', views.signup),
     path('ws/login', views.login),
