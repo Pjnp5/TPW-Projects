@@ -372,12 +372,14 @@ def getAppointment(request, id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def getPatientAppointments(request, id):
     appoitments = Appointment.objects.filter(patient=id)
     serializer = AppointmentSerializer(appoitments, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def getDepartmentAppointments(request, name):
     appoitments = Appointment.objects.filter(department=name)
     serializer = AppointmentSerializer(appoitments, many=True)
@@ -587,12 +589,14 @@ def getPrescription(request, id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def getPatientPrescriptions(request, id):
     prescriptions = Prescription.objects.filter(patient=id)
     serializer = PrescriptionSerializer(prescriptions, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def getDoctorPrescriptions(request, id):
     prescriptions = Prescription.objects.filter(doctor=id)
     serializer = PrescriptionSerializer(prescriptions, many=True)
@@ -697,6 +701,7 @@ def deletePrescription(request, id):
 #
 
 @api_view(['POST'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def signup(request):
     print("signup")
     try:
@@ -744,6 +749,7 @@ def signup(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def login(request):
     email = request.data['email']
     password = request.data['password']
@@ -772,6 +778,7 @@ def login(request):
 
 
 @api_view(['GET'])
+# @permission_classes([IsAuthenticated, IsPatient, IsDoctor, IsDean])
 def getUser(request):
     token = request.headers['jwt']
 

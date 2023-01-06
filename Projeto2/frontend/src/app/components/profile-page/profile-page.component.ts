@@ -60,7 +60,7 @@ export class ProfilePageComponent implements OnInit {
         let data = {"first_name":first_name,"last_name":last_name,"email":email,"password":password}
         console.log(data)
         this.patientService.updatePatient(this.user.id,data).subscribe(r=>r)
-
+        window.location.reload()
     }
   }
 

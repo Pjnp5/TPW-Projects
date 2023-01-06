@@ -8,7 +8,7 @@ export const environment = {
   HTTP_OPTIONS : {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   },
-  production: false
+  production: true
 };
 
 /*
