@@ -31,7 +31,11 @@ export class AuthenticationService {
 
   login(data: {}): Observable<any> {
     const url = this.baseURL + 'login';
-    return this.http.post(url, data, {withCredentials: true});
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': 'same-origin',
+      'withCredentials': 'true',
+    })
+    return this.http.post(url, data, {'headers':headers});
   }
 
   logout(): Observable<any> | any{

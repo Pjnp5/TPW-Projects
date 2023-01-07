@@ -156,6 +156,9 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
+    'http://localhost:5000',
+    'https://medictpw.web.app',
+    'https://console.firebase.google.com/project/medictpw/overview'
 ]
 CORS_ALLOW_HEADERS = [
     'accept',
