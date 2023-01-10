@@ -1,0 +1,56 @@
+// PATIENTS
+
+{
+    "first_name": "Armando",
+    "last_name": "Regal",
+    "email": "mandogalo@gmail.com",
+    "password": "patientpass"
+}
+{
+    "first_name": "Tiago",
+    "last_name": "Tiago",
+    "email": "ts@gmail.com",
+    "password": "palavrasecreta"
+}
+{
+    "first_name": "Amadeu",
+    "last_name": "Amadeu",
+    "email": "amadeucarvalho201@gmail.com",
+    "password": "grande"
+}
+
+// DOCTORS
+
+{
+    "first_name": "Cristina",
+    "last_name": "Santos",
+    "email": "cristina-santos@medic.com",
+    "password": "doctorpass"
+}
+{
+    "first_name": "Paulo",
+    "last_name": "Pinto",
+    "email": "ppinto@medic.com",
+    "password": "doctorpass"
+}
+{
+    "first_name": "Ana",
+    "last_name": "Fonseca",
+    "email": "notparadinha@medic.com",
+    "password": "doctorpass"
+}
+{
+    "first_name": "Miguel",
+    "last_name": "Manco",
+    "email": "mnmatos@medic.com",
+    "password": "doctorpass"
+}
+
+// DEANS
+
+{
+    "first_name": "Francisco",
+    "last_name": "Mendes",
+    "email": "fmendes@medic.com",
+    "password": "deanpass"
+}
