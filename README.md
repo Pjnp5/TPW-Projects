@@ -12,4 +12,4 @@
 
 ##### Project 1: 16
 
-##### Project 2: null (for now)
+##### Project 2: 16.5
